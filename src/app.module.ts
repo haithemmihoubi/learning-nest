@@ -13,5 +13,6 @@ import { LoggerMiddleware } from './middlewares/logger.middleware';
 export class AppModule {
   configure(consumer: MiddlewareConsumer) {
     consumer.apply(LoggerMiddleware).forRoutes('cat');
+    // .forRoutes({ path: 'cats', method: RequestMethod.GET });
   }
 }
