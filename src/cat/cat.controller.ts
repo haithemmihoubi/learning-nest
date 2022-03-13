@@ -10,23 +10,24 @@ import {
 import { CatService } from './cat.service';
 import { CreateCatDto } from './dto/create-cat.dto';
 import { UpdateCatDto } from './dto/update-cat.dto';
+import { Cat } from './entities/cat.entity';
 
 @Controller('cat')
 export class CatController {
   constructor(private readonly catService: CatService) {}
 
   @Post()
-  create(@Body() createCatDto: CreateCatDto): string {
+  async create(@Body() createCatDto: CreateCatDto) {
     return this.catService.create(createCatDto);
   }
 
   @Get()
-  findAll(): string {
+  async findAll(): Promise<Cat[]> {
     return this.catService.findAll();
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string): string {
+  findOne(@Param('id') id: string) {
     return this.catService.findOne(+id);
   }
 
