@@ -21,7 +21,7 @@ export class CatService {
   findOne(age: number) {
    for (let index = 0; index < this.cats.length; index++) {
      const element = this.cats[index];
-     if (element.age===id) {
+     if (element.age===age) {
        return element ;
      }
      
@@ -29,11 +29,19 @@ export class CatService {
 
   }
 
-  update(id: number, updateCatDto: UpdateCatDto): string {
-    return `This action updates a #${id} cat`;
+  update(age: number, updateCatDto: UpdateCatDto) {
+ return "cat" ;
   }
 
-  remove(id: number): string {
-    return `This action removes a #${id} cat`;
+  remove(id: number) {
+   for (let index = 0; index < this.cats.length; index++) {
+     const element = this.cats[index];
+     if (element.age===id) {
+      this.cats.splice(this.cats.indexOf(element),1) ;
+      return  this.cats  ;
+     }
+     
+   }
+
   }
 }
