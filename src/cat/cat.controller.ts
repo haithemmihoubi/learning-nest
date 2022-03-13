@@ -5,8 +5,10 @@ import {
   Body,
   Patch,
   Param,
-  Delete, HttpException
-} from "@nestjs/common";
+  Delete,
+  HttpException,
+  ParseIntPipe,
+} from '@nestjs/common';
 import { CatService } from './cat.service';
 import { CreateCatDto } from './dto/create-cat.dto';
 import { UpdateCatDto } from './dto/update-cat.dto';
@@ -27,7 +29,7 @@ export class CatController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
+  findOne(@Param('id', ParseIntPipe) id: string) {
     return this.catService.findOne(+id);
   }
 
