@@ -1,9 +1,10 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable } from "@nestjs/common";
 import { CreateCatDto } from './dto/create-cat.dto';
 import { UpdateCatDto } from './dto/update-cat.dto';
 import { Cat } from './entities/cat.entity';
+import { isEmpty } from "@nestjs/common/utils/shared.utils";
 
 @Injectable()
 export class CatService {
@@ -13,8 +14,11 @@ export class CatService {
   create(createCatDto: CreateCatDto) {
     return this.cats.push(createCatDto) ;
   }
-// returl  all the cats
+// return  all the cats
   findAll() {
+    if (isEmpty(this.cats)) {
+      throw new HttpException('Forbidden no cats found in acats array', HttpStatus.FORBIDDEN);
+    }
     return this.cats;
   }
   // find one cat by age

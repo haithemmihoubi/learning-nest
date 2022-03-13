@@ -16,5 +16,7 @@ export class AppModule {
     // .forRoutes({ path: 'cats', method: RequestMethod.GET });
     // apply  for a full controller
     // .forRoutes(CatsController);
+    //! The apply() method may either take a single middleware, or multiple arguments to specify multiple middlewares.
+    // for more https://docs.nestjs.com/middleware
   }
 }
