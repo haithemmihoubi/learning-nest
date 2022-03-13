@@ -14,5 +14,7 @@ export class AppModule {
   configure(consumer: MiddlewareConsumer) {
     consumer.apply(LoggerMiddleware).forRoutes('cat');
     // .forRoutes({ path: 'cats', method: RequestMethod.GET });
+    // apply  for a full controller
+    // .forRoutes(CatsController);
   }
 }
