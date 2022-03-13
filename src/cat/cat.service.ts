@@ -1,19 +1,32 @@
+/* eslint-disable prettier/prettier */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Injectable } from '@nestjs/common';
 import { CreateCatDto } from './dto/create-cat.dto';
 import { UpdateCatDto } from './dto/update-cat.dto';
+import { Cat } from './entities/cat.entity';
 
 @Injectable()
 export class CatService {
-  create(createCatDto: CreateCatDto): string {
-    return 'This action adds a new cat';
+  // array containing all the cats 
+  private readonly cats: Cat[] = [];
+  // create a cat 
+  create(createCatDto: CreateCatDto) {
+    return this.cats.push(createCatDto) ;
   }
-
-  findAll(): string {
-    return `This action returns all cat`;
+// returl  all the cats
+  findAll() {
+    return this.cats;
   }
+  // find one cat by age
+  findOne(age: number) {
+   for (let index = 0; index < this.cats.length; index++) {
+     const element = this.cats[index];
+     if (element.age===id) {
+       return element ;
+     }
+     
+   }
 
-  findOne(id: number): string {
-    return `This action returns a #${id} cat`;
   }
 
   update(id: number, updateCatDto: UpdateCatDto): string {
