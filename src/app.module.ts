@@ -4,9 +4,10 @@ import { AppService } from './app.service';
 import { CatModule } from './cat/cat.module';
 import { CatService } from './cat/cat.service';
 import { LoggerMiddleware } from './middlewares/logger.middleware';
+import { MessagesModule } from './messages/messages.module';
 
 @Module({
-  imports: [CatModule],
+  imports: [CatModule, MessagesModule],
   controllers: [AppController],
   providers: [AppService, CatService],
 })

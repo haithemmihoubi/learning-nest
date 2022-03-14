@@ -34,7 +34,10 @@ export class CatController {
   }
 
   @Patch(':id')
-  update(@Param('id',ParseIntPipe) id: string, @Body() updateCatDto: UpdateCatDto) {
+  update(
+    @Param('id', ParseIntPipe) id: string,
+    @Body() updateCatDto: UpdateCatDto,
+  ) {
     return this.catService.update(+id, updateCatDto);
   }
 
