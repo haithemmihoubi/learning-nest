@@ -1,24 +1,24 @@
 import { CreateMessageDto } from './dto/create-message.dto';
 import { UpdateMessageDto } from './dto/update-message.dto';
+import { readFile, writeFile } from 'fs/promises';
 
 export class MessagesRepository {
   create(createMessageDto: CreateMessageDto) {
     return createMessageDto;
   }
 
-  async  findAll() {
-    return `This action returns all messages`;
+  async findAll() {
+    const contents = await readFile('messages.json', 'utf8');
+    const messages = JSON.parse(contents);
   }
 
-  async findOne(id: number) {
-    return `This action returns a #${id} message`;
+  async findOne(id: string) {
+    const contents = await readFile('messages.json', 'utf8');
+    const messages = JSON.parse(contents);
+    return messages[id];
   }
 
-  update(id: number, updateMessageDto: UpdateMessageDto) {
-    return `This action updates a #${id} message`;
-  }
+  async update(id: number, updateMessageDto: UpdateMessageDto) {}
 
-  remove(id: number) {
-    return `This action removes a #${id} message`;
-  }
+  async remove(id: number) {}
 }
