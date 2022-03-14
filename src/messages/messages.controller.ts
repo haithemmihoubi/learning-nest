@@ -17,7 +17,8 @@ export class MessagesController {
 
   @Post()
   create(@Body() createMessageDto: CreateMessageDto) {
-    return this.messagesService.create(createMessageDto);
+    // @ts-ignore
+    return this.messagesService.create(createMessageDto.content);
   }
 
   @Get()
